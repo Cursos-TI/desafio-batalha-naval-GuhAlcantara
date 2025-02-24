@@ -40,32 +40,17 @@ int main() {
    
 
 
-    int tabuleiro[5][5];
-        tabuleiro[0][0] = 1;
-        tabuleiro[0][1] = 2;
-        tabuleiro[0][2] = 3; 
-        tabuleiro[0][3] = 4;
-        tabuleiro[0][4] = 5;
-        tabuleiro[1][0] = 6;
-        tabuleiro[1][1] = 7;
-        tabuleiro[1][2] = 8;
-        tabuleiro[1][3] = 9; 
-        tabuleiro[1][4] = 10; 
-        tabuleiro[2][0] = 11; 
-        tabuleiro[2][1] = 12; 
-        tabuleiro[2][2] = 13; 
-        tabuleiro[2][3] = 14; 
-        tabuleiro[2][4] = 15; 
-        tabuleiro[3][0] = 16; 
-        tabuleiro[3][1] = 17; 
-        tabuleiro[3][2] = 18; 
-        tabuleiro[3][3] = 19; 
-        tabuleiro[3][4] = 20; 
-        tabuleiro[4][0] = 21; 
-        tabuleiro[4][1] = 22; 
-        tabuleiro[4][2] = 23; 
-        tabuleiro[4][3] = 24; 
-        tabuleiro[4][4] = 25;  
+    int tabuleiro[5][5] = {
+        {1,2,3,4,5},  
+        {6,7,8,9,10},  
+        {11,12,13,14,15},  
+        {16,17,18,19,20},  
+        {21,22,23,24,25}, 
+    };
+
+    printf("O navio na Horizontal está ocupando tres casas nas coordenadas [1][0],[1][1] ,[1][2] = %d , %d , %d\n",tabuleiro[1][0],tabuleiro[1][1], tabuleiro[1][2]);;
+    printf("O Navio na vertical está ocupando duas casas nas coordenadas [2][1] ,[3][1] = %d , %d\n" , tabuleiro[2][1] , tabuleiro[3][1]);
+        
     
    
         
