@@ -45,20 +45,29 @@ int main()
     int soma = 0;
     int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
 
+
+   
+    
+    
+
+        // Construção do tabuleiro
     for (int i = 0; i < linha; i++)
     {
         for (int j = 0; j < coluna; j++)
         {
+            soma=0;
             soma++;
-            tabuleiro[i][j] = 0;
+            tabuleiro[i][j] = 0;            
             printf("%d ", tabuleiro[i][j]);
         }
 
         printf("\n");
     }
+   
+   
     printf("O navio na Horizontal está ocupando tres casas nas coordenadas [1][0],[1][1] ,[1][2]\n");
     ;
-    printf("O Navio na vertical está ocupando duas casas nas coordenadas [2][1] ,[3][1] = %d , %d\n", tabuleiro[2][1], tabuleiro[3][1]);
+    printf("O Navio na vertical está ocupando duas casas nas coordenadas [2][1] ,[3][1]");
 
     return 0;
 }
