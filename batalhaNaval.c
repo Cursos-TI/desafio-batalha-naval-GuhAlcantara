@@ -43,14 +43,45 @@ int main()
 
     int tabuleiro[linha][coluna] = {0};
     int soma = 0;
-    // int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
+    int horizontal = 0 , vertical = 0 ;
+    int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
+
+    
+    printf("Batalha Naval\n");
+    printf("Vamos Posicionar as peças\n");
 
     // navio1
-    printf("O Navio1 está na Horizontal e está ocupando tres casas nas coordenadas [1][0],[1][1] ,[1][2].\n");
-    tabuleiro[1][0] = 3;
-    tabuleiro[1][1] = 3;
-    tabuleiro[1][2] = 3;
+    printf("Navio1 (ficará na Horizontal)\n");
+    printf("Digite a casa na vertical: ");
+    scanf("%d" , &vertical);
+    printf("Digite a casa na horizontal: ");
+    scanf("%d", &horizontal);   
 
+    printf("O Navio1 Está nas casas : ");
+    for (int i = 0; i < 1 ; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+           
+            
+           tabuleiro[vertical][horizontal] = 3;
+           ++horizontal;
+           
+           
+           
+           printf("[%d][%d], " ,vertical  , horizontal - 1);
+            
+        }
+        printf("\n\n");
+        
+    }
+        
+    
+    // tabuleiro[1][0] = 3;
+    // tabuleiro[1][1] = 3;
+    // tabuleiro[1][2] = 3;
+
+    /*
     // navio2:
     printf("O Navio2 está na vertical e está ocupando duas casas nas coordenadas [7][1] ,[8][1] ,[9][1].\n");
     tabuleiro[7][1] = 3;
@@ -67,7 +98,7 @@ int main()
     tabuleiro[8][9]= 3;
     tabuleiro[7][8]= 3;
     tabuleiro[6][7]= 3;
-
+*/
 
 
     // Construção do tabuleiro
@@ -77,11 +108,14 @@ int main()
         {
             soma = 0;
             soma++;
+            
             printf("%d ", tabuleiro[i][j]);
+            
+
         }
 
         printf("\n");
     }
-
+    
     return 0;
 }
