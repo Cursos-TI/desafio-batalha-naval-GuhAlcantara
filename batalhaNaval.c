@@ -43,63 +43,106 @@ int main()
 
     int tabuleiro[linha][coluna] = {0};
     int soma = 0;
-    int horizontal = 0 , vertical = 0 ;
-    int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
+    int horizontal = 0, vertical = 0;
+    // int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
 
-    
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
 
-    // navio1
+    // navio1 - horizontal :
     printf("Navio1 (ficará na Horizontal)\n");
     printf("Digite a casa na vertical: ");
-    scanf("%d" , &vertical);
+    scanf("%d", &vertical);
     printf("Digite a casa na horizontal: ");
-    scanf("%d", &horizontal);   
+    scanf("%d", &horizontal);
 
     printf("O Navio1 Está nas casas : ");
-    for (int i = 0; i < 1 ; i++)
+    for (int i = 0; i < 1; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-           
-            
-           tabuleiro[vertical][horizontal] = 3;
-           ++horizontal;
-           
-           
-           
-           printf("[%d][%d], " ,vertical  , horizontal - 1);
-            
+
+            tabuleiro[vertical][horizontal] = 3;
+            horizontal++;
+
+            printf("[%d][%d], ", vertical, horizontal - 1);
         }
         printf("\n\n");
-        
     }
-        
-    
-    // tabuleiro[1][0] = 3;
-    // tabuleiro[1][1] = 3;
-    // tabuleiro[1][2] = 3;
+
+    // navio2 - vertical :
+    printf("Navio2 (ficará na vertical)\n");
+    printf("Digite a casa na vertical: ");
+    scanf("%d", &vertical);
+    printf("Digite a casa na horizontal: ");
+    scanf("%d", &horizontal);
+
+    printf("O Navio2 Está nas casas : ");
+    for (int i = 0; i < 1; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+
+            tabuleiro[vertical][horizontal] = 3;
+            vertical++;
+
+            printf("[%d][%d], ", vertical - 1, horizontal);
+        }
+        printf("\n\n");
+    }
+
+    // navio3:
+    printf("Navio3 (ficará na diagonal para a direita)\n");
+    printf("Digite a casa na vertical: ");
+    scanf("%d", &vertical);
+    printf("Digite a casa na horizontal: ");
+    scanf("%d", &horizontal);
+
+    printf("O Navio1 Está nas casas : ");
+    for (int i = 0; i < 1; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+
+            tabuleiro[vertical][horizontal] = 3;
+            horizontal++;
+            vertical--;
+
+            printf("[%d][%d], ", vertical + 1, horizontal - 1);
+        }
+        printf("\n\n");
+    }
+
+    // navio4:
+    printf("Navio4 (ficará na diagonal para a esquerda)\n");
+    printf("Digite a casa na vertical: ");
+    scanf("%d", &vertical);
+    printf("Digite a casa na horizontal: ");
+    scanf("%d", &horizontal);
+
+    printf("O Navio1 Está nas casas : ");
+    for (int i = 0; i < 1; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+
+            tabuleiro[vertical][horizontal] = 3;
+            horizontal--;
+            vertical++;
+
+            printf("[%d][%d], ", vertical - 1, horizontal + 1);
+        }
+        printf("\n\n");
+    }
 
     /*
-    // navio2:
-    printf("O Navio2 está na vertical e está ocupando duas casas nas coordenadas [7][1] ,[8][1] ,[9][1].\n");
-    tabuleiro[7][1] = 3;
-    tabuleiro[8][1] = 3;
-    tabuleiro[9][1] = 3;
-    // navio3
-    printf("O Navio3 está na diagonal e está o ocupando tres casas na diagonal  nas coordenadas[4][3],[3][4], [2][5]. \n");
-    tabuleiro[4][3]= 3;
-    tabuleiro[3][4]= 3;
-    tabuleiro[2][5]= 3;
- 
+
      // navio4
     printf("O Navio4 está na diagonal e está o ocupando tres casas na diagonal  nas coordenadas[8][9],[7][8], [6][7]. \n");
     tabuleiro[8][9]= 3;
     tabuleiro[7][8]= 3;
     tabuleiro[6][7]= 3;
 */
-
 
     // Construção do tabuleiro
     for (int i = 0; i < linha; i++)
@@ -108,14 +151,12 @@ int main()
         {
             soma = 0;
             soma++;
-            
-            printf("%d ", tabuleiro[i][j]);
-            
 
+            printf("%d ", tabuleiro[i][j]);
         }
 
         printf("\n");
     }
-    
+
     return 0;
 }
