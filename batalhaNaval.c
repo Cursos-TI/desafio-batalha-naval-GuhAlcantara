@@ -1,13 +1,5 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
-
-// Nível Novato - Posicionamento dos Navios
-// Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-// Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-// Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
 // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
 // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
@@ -57,18 +49,15 @@ int main()
     scanf("%d", &horizontal);
 
     printf("O Navio1 Está nas casas : ");
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
 
-            tabuleiro[vertical][horizontal] = 3;
-            horizontal++;
+        tabuleiro[vertical][horizontal] = 3;
+        horizontal++;
 
-            printf("[%d][%d], ", vertical, horizontal - 1);
-        }
-        printf("\n\n");
+        printf("[%d][%d], ", vertical, horizontal - 1);
     }
+    printf("\n\n");
 
     // navio2 - vertical :
     printf("Navio2 (ficará na vertical)\n");
@@ -78,18 +67,15 @@ int main()
     scanf("%d", &horizontal);
 
     printf("O Navio2 Está nas casas : ");
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
 
-            tabuleiro[vertical][horizontal] = 3;
-            vertical++;
+        tabuleiro[vertical][horizontal] = 3;
+        vertical++;
 
-            printf("[%d][%d], ", vertical - 1, horizontal);
-        }
-        printf("\n\n");
+        printf("[%d][%d], ", vertical - 1, horizontal);
     }
+    printf("\n\n");
 
     // navio3:
     printf("Navio3 (ficará na diagonal para a direita)\n");
@@ -98,20 +84,17 @@ int main()
     printf("Digite a casa na horizontal: ");
     scanf("%d", &horizontal);
 
-    printf("O Navio1 Está nas casas : ");
-    for (int i = 0; i < 1; i++)
+    printf("O Navio3 Está nas casas : ");
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
 
-            tabuleiro[vertical][horizontal] = 3;
-            horizontal++;
-            vertical--;
+        tabuleiro[vertical][horizontal] = 3;
+        horizontal++;
+        vertical--;
 
-            printf("[%d][%d], ", vertical + 1, horizontal - 1);
-        }
-        printf("\n\n");
+        printf("[%d][%d], ", vertical + 1, horizontal - 1);
     }
+    printf("\n\n");
 
     // navio4:
     printf("Navio4 (ficará na diagonal para a esquerda)\n");
@@ -120,34 +103,23 @@ int main()
     printf("Digite a casa na horizontal: ");
     scanf("%d", &horizontal);
 
-    printf("O Navio1 Está nas casas : ");
-    for (int i = 0; i < 1; i++)
+    printf("O Navio4 Está nas casas : ");
+    for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
-        {
 
-            tabuleiro[vertical][horizontal] = 3;
-            horizontal--;
-            vertical++;
+        tabuleiro[vertical][horizontal] = 3;
+        horizontal--;
+        vertical--;
 
-            printf("[%d][%d], ", vertical - 1, horizontal + 1);
-        }
-        printf("\n\n");
+        printf("[%d][%d], ", vertical + 1, horizontal + 1);
     }
-
-    /*
-
-     // navio4
-    printf("O Navio4 está na diagonal e está o ocupando tres casas na diagonal  nas coordenadas[8][9],[7][8], [6][7]. \n");
-    tabuleiro[8][9]= 3;
-    tabuleiro[7][8]= 3;
-    tabuleiro[6][7]= 3;
-*/
+    printf("\n\n");
 
     // Construção do tabuleiro
     for (int i = 0; i < linha; i++)
     {
         for (int j = 0; j < coluna; j++)
+
         {
             soma = 0;
             soma++;
