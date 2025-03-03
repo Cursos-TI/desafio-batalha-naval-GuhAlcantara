@@ -40,9 +40,9 @@ int main()
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
 
+    // navio1 - horizontal :
     while (!valido)
     {
-        // navio1 - horizontal :
         printf("Navio1 (ficará na Horizontal)\n");
         printf("Digite a casa na vertical(0 a %d): ", linha - 1);
         scanf("%d", &vertical);
@@ -63,7 +63,8 @@ int main()
             valido = 1;
         }
     }
-        // Posicionamento do Navio
+    
+    // Posicionanado navio1
     printf("O Navio1 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
@@ -76,13 +77,32 @@ int main()
     printf("\n\n");
 
     // navio2 - vertical :
+    while (!valido)
+    {
+        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        {
+            printf("Navio fora do tabuleiro , insira numero valido");
+        }
+        else if (vertical - 2 <= coluna)
+        {
+            printf("Navio nao cabe nessa posicao");
+        }
+        else
+        {
+            valido = 1;
+        }
+    }
+
+    // Posicionando navio2
     printf("Navio2 (ficará na vertical)\n");
     printf("Digite a casa na vertical: ");
     scanf("%d", &vertical);
     printf("Digite a casa na horizontal: ");
     scanf("%d", &horizontal);
 
-    printf("O Navio2 Está nas casas : ");
+    
+
+        printf("O Navio2 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
@@ -137,7 +157,7 @@ int main()
         for (int j = 0; j < coluna; j++)
 
         {
-            
+
             printf("%d ", tabuleiro[i][j]);
         }
 
