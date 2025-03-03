@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
 // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
 // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
@@ -34,20 +33,37 @@ int main()
 {
 
     int tabuleiro[linha][coluna] = {0};
-    int soma = 0;
     int horizontal = 0, vertical = 0;
+    int valido = 0;
     // int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
 
-    // navio1 - horizontal :
-    printf("Navio1 (ficará na Horizontal)\n");
-    printf("Digite a casa na vertical: ");
-    scanf("%d", &vertical);
-    printf("Digite a casa na horizontal: ");
-    scanf("%d", &horizontal);
+    while (!valido)
+    {
+        // navio1 - horizontal :
+        printf("Navio1 (ficará na Horizontal)\n");
+        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+        scanf("%d", &vertical);
+        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+        scanf("%d", &horizontal);
 
+        // verificaçao se esta no limite do tabuleiro
+        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        {
+            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+        }
+        else if (horizontal + 2 >= coluna)
+        {
+            printf("Navio nao cabe nessa posicao\n");
+        }
+        else
+        {
+            valido = 1;
+        }
+    }
+        // Posicionamento do Navio
     printf("O Navio1 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
@@ -121,9 +137,7 @@ int main()
         for (int j = 0; j < coluna; j++)
 
         {
-            soma = 0;
-            soma++;
-
+            
             printf("%d ", tabuleiro[i][j]);
         }
 
