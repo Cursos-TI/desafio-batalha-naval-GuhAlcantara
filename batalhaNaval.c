@@ -113,7 +113,21 @@ int main()
     }
     printf("\n\n");
 
-    // navio3:
+    // navio3 - Diagonal :
+    while(!valido){
+    if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+    {
+        printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+    }
+    else if (horizontal + 2 >= coluna || vertical - 2 == 0)
+    {
+        printf("Navio nao cabe nessa posicao\n");
+    }
+    else
+    {
+        valido = 1;
+    }
+}
     printf("Navio3 (ficará na diagonal para a direita)\n");
     printf("Digite a casa na vertical: ");
     scanf("%d", &vertical);
@@ -132,7 +146,21 @@ int main()
     }
     printf("\n\n");
 
-    // navio4:
+    // navio4 Diagonal:
+    while(!valido){
+        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        {
+            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+        }
+        else if (vertical - 2 == 0 || horizontal - 2 == 0)
+        {
+            printf("Navio nao cabe nessa posicao\n");
+        }
+        else
+        {
+            valido = 1;
+        }
+    }
     printf("Navio4 (ficará na diagonal para a esquerda)\n");
     printf("Digite a casa na vertical: ");
     scanf("%d", &vertical);
