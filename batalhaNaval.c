@@ -50,9 +50,9 @@ int main()
         scanf("%d", &horizontal);
 
         // verificaçao se esta no limite do tabuleiro
-        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
         {
-            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+            printf("Navio fora do tabuleiro, favor inserir numero valido\n");
         }
         else if (horizontal + 2 >= coluna)
         {
@@ -69,7 +69,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[vertical][horizontal] = 3;
+        tabuleiro[horizontal][vertical] = 3;
         horizontal++;
 
         printf("[%d][%d], ", vertical, horizontal - 1);
@@ -78,12 +78,13 @@ int main()
 
     // navio2 - vertical :
     while (!valido)
+    
     {
         if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
         {
             printf("Navio fora do tabuleiro , insira numero valido");
         }
-        else if (vertical - 2 <= coluna)
+        else if (vertical + 2 >= linha)
         {
             printf("Navio nao cabe nessa posicao");
         }
@@ -106,7 +107,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[vertical][horizontal] = 3;
+        tabuleiro[horizontal][vertical] = 3;
         vertical++;
 
         printf("[%d][%d], ", vertical - 1, horizontal);
@@ -115,11 +116,11 @@ int main()
 
     // navio3 - Diagonal :
     while(!valido){
-    if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+    if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
     {
         printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
     }
-    else if (horizontal + 2 >= coluna || vertical - 2 == 0)
+    else if (horizontal + 2 >= linha || vertical - 2 == 0)
     {
         printf("Navio nao cabe nessa posicao\n");
     }
@@ -138,7 +139,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[vertical][horizontal] = 3;
+        tabuleiro[horizontal][vertical] = 3;
         horizontal++;
         vertical--;
 
@@ -148,7 +149,7 @@ int main()
 
     // navio4 Diagonal:
     while(!valido){
-        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
@@ -171,7 +172,7 @@ int main()
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[vertical][horizontal] = 3;
+        tabuleiro[horizontal][vertical] = 3;
         horizontal--;
         vertical--;
 
