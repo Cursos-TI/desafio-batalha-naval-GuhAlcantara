@@ -29,7 +29,14 @@
 #define linha 10
 #define coluna 10
 
+void poderOctaedro(int octaedro)
+{} 
 
+void poderCruz (int cruz)
+{}
+
+void poderCone (int cone)
+{}
 
 int main()
 {
@@ -37,7 +44,8 @@ int main()
     int tabuleiro[linha][coluna] = {0};
     int horizontal = 0, vertical = 0;
     int valido = 0;
-    // int navio1 = 0, navio2 = 0, navio3 = 0, navio4 = 0;
+    int cone , cruz , octaedro;
+    
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
