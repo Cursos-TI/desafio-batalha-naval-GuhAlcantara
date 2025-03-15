@@ -46,7 +46,7 @@ int main()
         printf("Navio1 (ficará na Horizontal)\n");
         printf("Digite a casa na vertical(0 a %d): ", linha - 1);
         scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+        printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
         scanf("%d", &horizontal);
 
         // verificaçao se esta no limite do tabuleiro
@@ -166,7 +166,7 @@ int main()
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
-        else if (vertical - 2 <= 0 || horizontal - 2 <= 0)
+        else if (vertical - 2 < 0 || horizontal - 2 < 0)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
