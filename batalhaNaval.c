@@ -29,6 +29,8 @@
 #define linha 10
 #define coluna 10
 
+
+
 int main()
 {
 
