@@ -30,13 +30,16 @@
 #define coluna 10
 
 void poderOctaedro(int octaedro)
-{} 
+{
+}
 
-void poderCruz (int cruz)
-{}
+void poderCruz(int cruz)
+{
+}
 
-void poderCone (int cone)
-{}
+void poderCone(int cone)
+{
+}
 
 int main()
 {
@@ -44,8 +47,7 @@ int main()
     int tabuleiro[linha][coluna] = {0};
     int horizontal = 0, vertical = 0;
     int valido = 0;
-    int cone , cruz , octaedro;
-    
+    int cone, cruz, octaedro;
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
@@ -107,6 +109,15 @@ int main()
         }
         else
         {
+        }
+        // Verificaçao se a posiçao esta ocupada
+        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal][vertical + 1] == 3 || tabuleiro[horizontal][vertical + 2] == 3)
+        {
+            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+        }
+        else
+        {
+
             valido = 1;
         }
     }
@@ -139,12 +150,22 @@ int main()
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
-        else if (horizontal + 2 >= linha || vertical - 2 <= 0)
+        else if (horizontal + 2 >= linha || vertical - 2 < 0)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
         else
         {
+        }
+
+        // Verificaçao se a posiçao esta ocupada
+        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal + 1][vertical - 1] == 3 || tabuleiro[horizontal + 2][vertical - 2] == 3)
+        {
+            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+        }
+        else
+        {
+
             valido = 1;
         }
     }
@@ -182,6 +203,16 @@ int main()
         }
         else
         {
+        }
+
+        // Verificaçao se a posiçao esta ocupada
+        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal - 1][vertical - 1] == 3 || tabuleiro[horizontal - 2][vertical - 2] == 3)
+        {
+            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+        }
+        else
+        {
+
             valido = 1;
         }
     }
