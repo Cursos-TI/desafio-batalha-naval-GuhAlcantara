@@ -54,7 +54,7 @@ int main()
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n");
         }
-        else if (horizontal + 2 >= coluna)
+        else if (horizontal + 2 >= linha)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
@@ -63,7 +63,7 @@ int main()
             valido = 1;
         }
     }
-    
+
     // Posicionanado navio1
     printf("O Navio1 Está nas casas : ");
     for (int i = 0; i < 3; i++)
@@ -76,17 +76,24 @@ int main()
     }
     printf("\n\n");
 
+    valido = 0;
+
     // navio2 - vertical :
     while (!valido)
-    
     {
-        if (vertical < 0 || horizontal < 0 || vertical >= linha || horizontal >= coluna)
+        printf("Navio2 (ficará na vertical)\n");
+        printf("Digite a casa na vertical(0 a %d): ", linha - 3);
+        scanf("%d", &vertical);
+        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+        scanf("%d", &horizontal);
+
+        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
         {
-            printf("Navio fora do tabuleiro , insira numero valido");
+            printf("Navio fora do tabuleiro , insira numero valido\n");
         }
-        else if (vertical + 2 >= linha)
+        else if (vertical + 2 >= coluna)
         {
-            printf("Navio nao cabe nessa posicao");
+            printf("Navio nao cabe nessa posicao\n");
         }
         else
         {
@@ -94,16 +101,8 @@ int main()
         }
     }
 
-    // Posicionando navio2
-    printf("Navio2 (ficará na vertical)\n");
-    printf("Digite a casa na vertical: ");
-    scanf("%d", &vertical);
-    printf("Digite a casa na horizontal: ");
-    scanf("%d", &horizontal);
-
-    
-
-        printf("O Navio2 Está nas casas : ");
+    // posicionamento do navio2
+    printf("O Navio2 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
@@ -114,27 +113,32 @@ int main()
     }
     printf("\n\n");
 
-    // navio3 - Diagonal :
-    while(!valido){
-    if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
-    {
-        printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
-    }
-    else if (horizontal + 2 >= linha || vertical - 2 == 0)
-    {
-        printf("Navio nao cabe nessa posicao\n");
-    }
-    else
-    {
-        valido = 1;
-    }
-}
-    printf("Navio3 (ficará na diagonal para a direita)\n");
-    printf("Digite a casa na vertical: ");
-    scanf("%d", &vertical);
-    printf("Digite a casa na horizontal: ");
-    scanf("%d", &horizontal);
+    valido = 0;
 
+    // navio3 - Diagonal :
+    while (!valido)
+    {
+
+        printf("Navio3 (Ficara na Diagonal)\n");
+        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+        scanf("%d", &vertical);
+        printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
+        scanf("%d", &horizontal);
+
+        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
+        {
+            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+        }
+        else if (horizontal + 2 >= linha || vertical - 2 <= 0)
+        {
+            printf("Navio nao cabe nessa posicao\n");
+        }
+        else
+        {
+            valido = 1;
+        }
+    }
+    // Posicionamento navio3
     printf("O Navio3 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
@@ -147,13 +151,22 @@ int main()
     }
     printf("\n\n");
 
+    valido = 0;
+
     // navio4 Diagonal:
-    while(!valido){
+    while (!valido)
+    {
+        printf("Navio1 (Diagonal)\n");
+        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+        scanf("%d", &vertical);
+        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+        scanf("%d", &horizontal);
+
         if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
-        else if (vertical - 2 == 0 || horizontal - 2 == 0)
+        else if (vertical - 2 <= 0 || horizontal - 2 <= 0)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
@@ -162,11 +175,8 @@ int main()
             valido = 1;
         }
     }
-    printf("Navio4 (ficará na diagonal para a esquerda)\n");
-    printf("Digite a casa na vertical: ");
-    scanf("%d", &vertical);
-    printf("Digite a casa na horizontal: ");
-    scanf("%d", &horizontal);
+
+    // Posicionamento Navio4
 
     printf("O Navio4 Está nas casas : ");
     for (int i = 0; i < 3; i++)
