@@ -66,7 +66,7 @@ int main()
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n");
         }
-        else if (horizontal + 2 >= linha)
+        else if (horizontal >= 8)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
@@ -76,19 +76,19 @@ int main()
         }
     }
 
+    valido = 0; // para conseguir resetar os menus while
+
     // Posicionanado navio1
     printf("O Navio1 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[horizontal][vertical] = 3;
+        tabuleiro[vertical][horizontal] = 3;
         horizontal++;
 
         printf("[%d][%d], ", vertical, horizontal - 1);
     }
     printf("\n\n");
-
-    valido = 0;
 
     // navio2 - vertical :
     while (!valido)
@@ -103,15 +103,11 @@ int main()
         {
             printf("Navio fora do tabuleiro , insira numero valido\n");
         }
-        else if (vertical + 2 >= coluna)
+        else if (vertical >= 8)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
-        else
-        {
-        }
-        // Verificaçao se a posiçao esta ocupada
-        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal][vertical + 1] == 3 || tabuleiro[horizontal][vertical + 2] == 3)
+        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical + 1][horizontal] == 3 || tabuleiro[vertical + 2][horizontal] == 3) // verificaçao se local esta ocupado
         {
             printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
         }
@@ -122,19 +118,19 @@ int main()
         }
     }
 
+    valido = 0; // para conseguir resetar os menus while
+
     // posicionamento do navio2
     printf("O Navio2 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[horizontal][vertical] = 3;
+        tabuleiro[vertical][horizontal] = 3;
         vertical++;
 
         printf("[%d][%d], ", vertical - 1, horizontal);
     }
     printf("\n\n");
-
-    valido = 0;
 
     // navio3 - Diagonal :
     while (!valido)
@@ -150,16 +146,11 @@ int main()
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
-        else if (horizontal + 2 >= linha || vertical - 2 < 0)
+        else if (horizontal >= 8 || vertical < 2)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
-        else
-        {
-        }
-
-        // Verificaçao se a posiçao esta ocupada
-        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal + 1][vertical - 1] == 3 || tabuleiro[horizontal + 2][vertical - 2] == 3)
+        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal = 1] == 3 || tabuleiro[vertical - 2][horizontal + 2] == 3) // Verificaçao se a posiçao esta ocupada
         {
             printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
         }
@@ -169,12 +160,15 @@ int main()
             valido = 1;
         }
     }
+
+    valido = 0; // para conseguir resetar os menus while
+
     // Posicionamento navio3
     printf("O Navio3 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[horizontal][vertical] = 3;
+        tabuleiro[vertical][horizontal] = 3;
         horizontal++;
         vertical--;
 
@@ -182,31 +176,26 @@ int main()
     }
     printf("\n\n");
 
-    valido = 0;
+    
 
     // navio4 Diagonal:
     while (!valido)
     {
-        printf("Navio1 (Diagonal)\n");
-        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+        printf("Navio4 (Diagonal)\n");
+        printf("Digite a casa na vertical(22 a %d): ", linha - 1);
         scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+        printf("Digite a casa na horizontal(2 a %d): ", coluna - 1);
         scanf("%d", &horizontal);
 
         if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
         {
             printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
         }
-        else if (vertical - 2 < 0 || horizontal - 2 < 0)
+        else if (vertical < 2 || horizontal < 2)
         {
             printf("Navio nao cabe nessa posicao\n");
         }
-        else
-        {
-        }
-
-        // Verificaçao se a posiçao esta ocupada
-        if (tabuleiro[horizontal][vertical] == 3 || tabuleiro[horizontal - 1][vertical - 1] == 3 || tabuleiro[horizontal - 2][vertical - 2] == 3)
+        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal - 1] == 3 || tabuleiro[vertical - 2][horizontal - 2] == 3)  // Verificaçao se a posiçao esta ocupada
         {
             printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
         }
@@ -217,13 +206,15 @@ int main()
         }
     }
 
+    valido = 0;  // para conseguir resetar os menus while
+
     // Posicionamento Navio4
 
     printf("O Navio4 Está nas casas : ");
     for (int i = 0; i < 3; i++)
     {
 
-        tabuleiro[horizontal][vertical] = 3;
+        tabuleiro[vertical][horizontal] = 3;
         horizontal--;
         vertical--;
 
