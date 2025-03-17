@@ -208,7 +208,7 @@ int main()
 
     valido = 0;  // para conseguir resetar os menus while
 
-    // Posicionamento Navio4
+    // Posicionamento Navio4 teste 2
 
     printf("O Navio4 Está nas casas : ");
     for (int i = 0; i < 3; i++)
