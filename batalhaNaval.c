@@ -33,8 +33,24 @@ void poderOctaedro(int octaedro)
 {
 }
 
+
 void poderCruz(int cruz)
 {
+
+    int poderCruz[3][5] = {0};
+
+    for (int i = 0 ; i < 3 ; i++){
+        for (int j = 0 ; j < 5 ; j++) {
+
+            if (i == 1 || j == 2)
+
+            poderCruz[i][j] = 1;
+            printf("%d ", poderCruz[i][j]);
+
+        }
+        printf("\n");
+     }   
+    
 }
 
 void poderCone(int cone)
@@ -47,7 +63,10 @@ int main()
     int tabuleiro[linha][coluna] = {0};
     int horizontal = 0, vertical = 0;
     int valido = 0;
-    int cone, cruz, octaedro;
+    int cone  , cruz  , octaedro ;
+
+
+    
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
@@ -208,7 +227,7 @@ int main()
 
     valido = 0;  // para conseguir resetar os menus while
 
-    // Posicionamento Navio4 teste 2
+    // Posicionamento Navio4
 
     printf("O Navio4 Está nas casas : ");
     for (int i = 0; i < 3; i++)
