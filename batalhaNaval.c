@@ -33,56 +33,82 @@ void poderOctaedro(int octaedro)
 {
     int poderOctaedro[3][5] = {0};
 
-    for (int i = 0 ; i < 3 ; i++){
-        for(int j = 0 ; j < 5 ; j++){
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
 
-        if (i == 0 && j == 2){ 
-        
-            poderOctaedro[i][j] = 1;
+            if (i == 0 && j == 2)
+            {
+
+                poderOctaedro[i][j] = 1;
+            }
+            else if (i == 1 && (j >= 1 && j <= 3))
+            {
+
+                poderOctaedro[i][j] = 1;
+            }
+
+            else if (i == 2 && j == 2)
+            {
+
+                poderOctaedro[i][j] = 1;
+            }
+
+            printf("%d", poderOctaedro[i][j]);
         }
-        else if (i == 1 && (j >= 1 && j<= 3)){
-
-            poderOctaedro[i][j] = 1;
-
-        } 
-
-        else if (i == 2 && j == 2){
-
-            poderOctaedro[i][j] = 1;
-
-        }
-
-            printf("%d" ,poderOctaedro[i][j]);
-              
+        printf("\n");
     }
-    printf("\n");
-    }
-    
-
 }
-
 
 void poderCruz(int cruz)
 {
 
     int poderCruz[3][5] = {0};
 
-    for (int i = 0 ; i < 3 ; i++){
-        for (int j = 0 ; j < 5 ; j++) {
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
 
             if (i == 1 || j == 2)
 
-            poderCruz[i][j] = 1;
+                poderCruz[i][j] = 1;
             printf("%d ", poderCruz[i][j]);
-
         }
         printf("\n");
-     }   
-    
+    }
 }
 
 void poderCone(int cone)
 {
+
+    int poderCone[3][5] = {0};
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+
+            if (i == 0 && j == 2)
+            {
+
+                poderCone[i][j] = 1;
+            }
+            else if (i == 1 && (j > 0 && j < 4))
+            {
+
+                poderCone[i][j] = 1;
+            }
+            else if (i == 2)
+            {
+                poderCone[i][j] = 1;
+            }
+
+            printf("%d", poderCone[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 int main()
@@ -91,10 +117,9 @@ int main()
     int tabuleiro[linha][coluna] = {0};
     int horizontal = 0, vertical = 0;
     int valido = 0;
-    int cone  , cruz  , octaedro ;
+    int cone, cruz, octaedro;
 
-
-   
+    poderCone(cone);
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
@@ -223,8 +248,6 @@ int main()
     }
     printf("\n\n");
 
-    
-
     // navio4 Diagonal:
     while (!valido)
     {
@@ -242,7 +265,7 @@ int main()
         {
             printf("Navio nao cabe nessa posicao\n");
         }
-        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal - 1] == 3 || tabuleiro[vertical - 2][horizontal - 2] == 3)  // Verificaçao se a posiçao esta ocupada
+        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal - 1] == 3 || tabuleiro[vertical - 2][horizontal - 2] == 3) // Verificaçao se a posiçao esta ocupada
         {
             printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
         }
@@ -253,7 +276,7 @@ int main()
         }
     }
 
-    valido = 0;  // para conseguir resetar os menus while
+    valido = 0; // para conseguir resetar os menus while
 
     // Posicionamento Navio4
 
