@@ -31,6 +31,34 @@
 
 void poderOctaedro(int octaedro)
 {
+    int poderOctaedro[3][5] = {0};
+
+    for (int i = 0 ; i < 3 ; i++){
+        for(int j = 0 ; j < 5 ; j++){
+
+        if (i == 0 && j == 2){ 
+        
+            poderOctaedro[i][j] = 1;
+        }
+        else if (i == 1 && (j >= 1 && j<= 3)){
+
+            poderOctaedro[i][j] = 1;
+
+        } 
+
+        else if (i == 2 && j == 2){
+
+            poderOctaedro[i][j] = 1;
+
+        }
+
+            printf("%d" ,poderOctaedro[i][j]);
+              
+    }
+    printf("\n");
+    }
+    
+
 }
 
 
@@ -66,7 +94,7 @@ int main()
     int cone  , cruz  , octaedro ;
 
 
-    
+   
 
     printf("Batalha Naval\n");
     printf("Vamos Posicionar as peças\n");
