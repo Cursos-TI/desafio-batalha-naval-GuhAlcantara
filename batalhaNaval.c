@@ -31,279 +31,313 @@
 
 void poderOctaedro(int octaedro)
 {
-    int poderOctaedro[3][5] = {0};
+	int poderOctaedro[3][5] = {0};
 
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
 
-            if (i == 0 && j == 2)
-            {
+			if (i == 0 && j == 2)
+			{
 
-                poderOctaedro[i][j] = 1;
-            }
-            else if (i == 1 && (j >= 1 && j <= 3))
-            {
+				poderOctaedro[i][j] = 1;
+			}
+			else if (i == 1 && (j >= 1 && j <= 3))
+			{
 
-                poderOctaedro[i][j] = 1;
-            }
+				poderOctaedro[i][j] = 1;
+			}
 
-            else if (i == 2 && j == 2)
-            {
+			else if (i == 2 && j == 2)
+			{
 
-                poderOctaedro[i][j] = 1;
-            }
+				poderOctaedro[i][j] = 1;
+			}
 
-            printf("%d", poderOctaedro[i][j]);
-        }
-        printf("\n");
-    }
+			printf("%d", poderOctaedro[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 void poderCruz(int cruz)
 {
 
-    int poderCruz[3][5] = {0};
+	int poderCruz[3][5] = {0};
 
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
 
-            if (i == 1 || j == 2)
+			if (i == 1 || j == 2)
 
-                poderCruz[i][j] = 1;
-            printf("%d ", poderCruz[i][j]);
-        }
-        printf("\n");
-    }
+				poderCruz[i][j] = 1;
+			printf("%d ", poderCruz[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 void poderCone(int cone)
 {
 
-    int poderCone[3][5] = {0};
+	int poderCone[3][5] = {0};
 
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 5; j++)
-        {
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
 
-            if (i == 0 && j == 2)
-            {
+			if (i == 0 && j == 2)
+			{
 
-                poderCone[i][j] = 1;
-            }
-            else if (i == 1 && (j > 0 && j < 4))
-            {
+				poderCone[i][j] = 1;
+			}
+			else if (i == 1 && (j > 0 && j < 4))
+			{
 
-                poderCone[i][j] = 1;
-            }
-            else if (i == 2)
-            {
-                poderCone[i][j] = 1;
-            }
+				poderCone[i][j] = 1;
+			}
+			else if (i == 2)
+			{
+				poderCone[i][j] = 1;
+			}
 
-            printf("%d", poderCone[i][j]);
-        }
-        printf("\n");
-    }
+			printf("%d", poderCone[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 int main()
 {
 
-    int tabuleiro[linha][coluna] = {0};
-    int horizontal = 0, vertical = 0;
-    int valido = 0;
-    int cone, cruz, octaedro;
+	int tabuleiro[linha][coluna] = {0};
+	int horizontal = 0, vertical = 0;
+	int valido = 0;
+	int cone, cruz, octaedro;
+	int opcao;
 
-    poderCone(cone);
+	printf("Batalha Naval\n");
+	printf("Vamos Posicionar as peças\n");
 
-    printf("Batalha Naval\n");
-    printf("Vamos Posicionar as peças\n");
+	// navio1 - horizontal :
+	while (!valido)
+	{
+		printf("Navio1 (ficará na Horizontal)\n");
+		printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+		scanf("%d", &vertical);
+		printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
+		scanf("%d", &horizontal);
 
-    // navio1 - horizontal :
-    while (!valido)
-    {
-        printf("Navio1 (ficará na Horizontal)\n");
-        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
-        scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
-        scanf("%d", &horizontal);
+		// verificaçao se esta no limite do tabuleiro
+		if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
+		{
+			printf("Navio fora do tabuleiro, favor inserir numero valido\n");
+		}
+		else if (horizontal >= 8)
+		{
+			printf("Navio nao cabe nessa posicao\n");
+		}
+		else
+		{
+			valido = 1;
+		}
+	}
 
-        // verificaçao se esta no limite do tabuleiro
-        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
-        {
-            printf("Navio fora do tabuleiro, favor inserir numero valido\n");
-        }
-        else if (horizontal >= 8)
-        {
-            printf("Navio nao cabe nessa posicao\n");
-        }
-        else
-        {
-            valido = 1;
-        }
-    }
+	valido = 0; // para conseguir resetar os menus while
 
-    valido = 0; // para conseguir resetar os menus while
+	// Posicionanado navio1
+	printf("O Navio1 Está nas casas : ");
+	for (int i = 0; i < 3; i++)
+	{
 
-    // Posicionanado navio1
-    printf("O Navio1 Está nas casas : ");
-    for (int i = 0; i < 3; i++)
-    {
+		tabuleiro[vertical][horizontal] = 3;
+		horizontal++;
 
-        tabuleiro[vertical][horizontal] = 3;
-        horizontal++;
+		printf("[%d][%d], ", vertical, horizontal - 1);
+	}
+	printf("\n\n");
 
-        printf("[%d][%d], ", vertical, horizontal - 1);
-    }
-    printf("\n\n");
+	// navio2 - vertical :
+	while (!valido)
+	{
+		printf("Navio2 (ficará na vertical)\n");
+		printf("Digite a casa na vertical(0 a %d): ", linha - 3);
+		scanf("%d", &vertical);
+		printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
+		scanf("%d", &horizontal);
 
-    // navio2 - vertical :
-    while (!valido)
-    {
-        printf("Navio2 (ficará na vertical)\n");
-        printf("Digite a casa na vertical(0 a %d): ", linha - 3);
-        scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(0 a %d): ", coluna - 1);
-        scanf("%d", &horizontal);
+		if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
+		{
+			printf("Navio fora do tabuleiro , insira numero valido\n");
+		}
+		else if (vertical >= 8)
+		{
+			printf("Navio nao cabe nessa posicao\n");
+		}
+		else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical + 1][horizontal] == 3 || tabuleiro[vertical + 2][horizontal] == 3) // verificaçao se local esta ocupado
+		{
+			printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+		}
+		else
+		{
 
-        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
-        {
-            printf("Navio fora do tabuleiro , insira numero valido\n");
-        }
-        else if (vertical >= 8)
-        {
-            printf("Navio nao cabe nessa posicao\n");
-        }
-        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical + 1][horizontal] == 3 || tabuleiro[vertical + 2][horizontal] == 3) // verificaçao se local esta ocupado
-        {
-            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
-        }
-        else
-        {
+			valido = 1;
+		}
+	}
 
-            valido = 1;
-        }
-    }
+	valido = 0; // para conseguir resetar os menus while
 
-    valido = 0; // para conseguir resetar os menus while
+	// posicionamento do navio2
+	printf("O Navio2 Está nas casas : ");
+	for (int i = 0; i < 3; i++)
+	{
 
-    // posicionamento do navio2
-    printf("O Navio2 Está nas casas : ");
-    for (int i = 0; i < 3; i++)
-    {
+		tabuleiro[vertical][horizontal] = 3;
+		vertical++;
 
-        tabuleiro[vertical][horizontal] = 3;
-        vertical++;
+		printf("[%d][%d], ", vertical - 1, horizontal);
+	}
+	printf("\n\n");
 
-        printf("[%d][%d], ", vertical - 1, horizontal);
-    }
-    printf("\n\n");
+	// navio3 - Diagonal :
+	while (!valido)
+	{
 
-    // navio3 - Diagonal :
-    while (!valido)
-    {
+		printf("Navio3 (Ficara na Diagonal)\n");
+		printf("Digite a casa na vertical(0 a %d): ", linha - 1);
+		scanf("%d", &vertical);
+		printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
+		scanf("%d", &horizontal);
 
-        printf("Navio3 (Ficara na Diagonal)\n");
-        printf("Digite a casa na vertical(0 a %d): ", linha - 1);
-        scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(0 a %d): ", coluna - 3);
-        scanf("%d", &horizontal);
+		if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
+		{
+			printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+		}
+		else if (horizontal >= 8 || vertical < 2)
+		{
+			printf("Navio nao cabe nessa posicao\n");
+		}
+		else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal = 1] == 3 || tabuleiro[vertical - 2][horizontal + 2] == 3) // Verificaçao se a posiçao esta ocupada
+		{
+			printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+		}
+		else
+		{
 
-        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
-        {
-            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
-        }
-        else if (horizontal >= 8 || vertical < 2)
-        {
-            printf("Navio nao cabe nessa posicao\n");
-        }
-        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal = 1] == 3 || tabuleiro[vertical - 2][horizontal + 2] == 3) // Verificaçao se a posiçao esta ocupada
-        {
-            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
-        }
-        else
-        {
+			valido = 1;
+		}
+	}
 
-            valido = 1;
-        }
-    }
+	valido = 0; // para conseguir resetar os menus while
 
-    valido = 0; // para conseguir resetar os menus while
+	// Posicionamento navio3
+	printf("O Navio3 Está nas casas : ");
+	for (int i = 0; i < 3; i++)
+	{
 
-    // Posicionamento navio3
-    printf("O Navio3 Está nas casas : ");
-    for (int i = 0; i < 3; i++)
-    {
+		tabuleiro[vertical][horizontal] = 3;
+		horizontal++;
+		vertical--;
 
-        tabuleiro[vertical][horizontal] = 3;
-        horizontal++;
-        vertical--;
+		printf("[%d][%d], ", vertical + 1, horizontal - 1);
+	}
+	printf("\n\n");
 
-        printf("[%d][%d], ", vertical + 1, horizontal - 1);
-    }
-    printf("\n\n");
+	// navio4 Diagonal:
+	while (!valido)
+	{
+		printf("Navio4 (Diagonal)\n");
+		printf("Digite a casa na vertical(2 a %d): ", linha - 1);
+		scanf("%d", &vertical);
+		printf("Digite a casa na horizontal(2 a %d): ", coluna - 1);
+		scanf("%d", &horizontal);
 
-    // navio4 Diagonal:
-    while (!valido)
-    {
-        printf("Navio4 (Diagonal)\n");
-        printf("Digite a casa na vertical(22 a %d): ", linha - 1);
-        scanf("%d", &vertical);
-        printf("Digite a casa na horizontal(2 a %d): ", coluna - 1);
-        scanf("%d", &horizontal);
+		if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
+		{
+			printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
+		}
+		else if (vertical < 2 || horizontal < 2)
+		{
+			printf("Navio nao cabe nessa posicao\n");
+		}
+		else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal - 1] == 3 || tabuleiro[vertical - 2][horizontal - 2] == 3) // Verificaçao se a posiçao esta ocupada
+		{
+			printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
+		}
+		else
+		{
 
-        if (vertical < 0 || horizontal < 0 || vertical >= coluna || horizontal >= linha)
-        {
-            printf("Navio fora do tabuleiro, favor inserir numero valido\n ");
-        }
-        else if (vertical < 2 || horizontal < 2)
-        {
-            printf("Navio nao cabe nessa posicao\n");
-        }
-        else if (tabuleiro[vertical][horizontal] == 3 || tabuleiro[vertical - 1][horizontal - 1] == 3 || tabuleiro[vertical - 2][horizontal - 2] == 3) // Verificaçao se a posiçao esta ocupada
-        {
-            printf("POSICAO OCUPADA , Favor digitar nova posicao\n");
-        }
-        else
-        {
+			valido = 1;
+		}
+	}
 
-            valido = 1;
-        }
-    }
+	// Posicionamento Navio4
 
-    valido = 0; // para conseguir resetar os menus while
+	printf("O Navio4 Está nas casas : ");
+	for (int i = 0; i < 3; i++)
+	{
 
-    // Posicionamento Navio4
+		tabuleiro[vertical][horizontal] = 3;
+		horizontal--;
+		vertical--;
 
-    printf("O Navio4 Está nas casas : ");
-    for (int i = 0; i < 3; i++)
-    {
+		printf("[%d][%d], ", vertical + 1, horizontal + 1);
+	}
+	printf("\n\n");
 
-        tabuleiro[vertical][horizontal] = 3;
-        horizontal--;
-        vertical--;
 
-        printf("[%d][%d], ", vertical + 1, horizontal + 1);
-    }
-    printf("\n\n");
+	printf("NAVIOS POSICIONADOS COM SUCESSO\n\n"); 
+	
+	// Construção do tabuleiro
+	for (int i = 0; i < linha; i++)
+	{
+		for (int j = 0; j < coluna; j++)
 
-    // Construção do tabuleiro
-    for (int i = 0; i < linha; i++)
-    {
-        for (int j = 0; j < coluna; j++)
+		{
 
-        {
+			printf("%d ", tabuleiro[i][j]);
+		}
 
-            printf("%d ", tabuleiro[i][j]);
-        }
+		printf("\n");
+	}
 
-        printf("\n");
-    }
+	printf("\n\n");
+	// Começar a usar os poderes
+	valido = 0; // para conseguir resetar os menus while
+	while (!valido)
+	{
+		printf("Escolha qual poder voce deseja usar\n");
+		printf("1 - Poder Cone\n");
+		printf("2 - poder Cruz\n");
+		printf("3 - poder Octaedro\n");
+		printf("Opcao: ");
+		scanf("%d", &opcao);
 
-    return 0;
+		switch (opcao)
+		{
+		case 1:
+			printf("PODER DE CONE\n");
+
+			break;
+
+		case 2:
+			printf("PODER DE CRUZ\n");
+
+			break;
+
+		case 3:
+			printf("PODER DE OCTAEDRO\n");
+			break;
+
+		default:
+
+			printf("OPCAO INVALIDA , TENTE NOVAMENTE");
+			break;
+		}
+	}
+	return 0;
 }
