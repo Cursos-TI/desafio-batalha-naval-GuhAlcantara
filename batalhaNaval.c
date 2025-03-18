@@ -29,6 +29,21 @@
 #define linha 10
 #define coluna 10
 
+void imprimirTabuleiro(int tabuleiro[linha][coluna])
+{
+	for (int i = 0; i < linha; i++)
+	{
+		for (int j = 0; j < coluna; j++)
+
+		{
+
+			printf("%2d", tabuleiro[i][j]);
+		}
+
+		printf("\n");
+	}
+}
+
 void poderOctaedro(int octaedro)
 {
 	int poderOctaedro[3][5] = {0};
@@ -117,7 +132,7 @@ int main()
 	int tabuleiro[linha][coluna] = {0};
 	int horizontal = 0, vertical = 0;
 	int valido = 0;
-	int cone, cruz, octaedro;
+	int cone[3][5], cruz[3][5], octaedro[3][5];
 	int opcao;
 
 	printf("Batalha Naval\n");
@@ -228,7 +243,7 @@ int main()
 		else
 		{
 
-			valido = 1;
+			valido = 1 ;
 		}
 	}
 
@@ -293,17 +308,8 @@ int main()
 	printf("NAVIOS POSICIONADOS COM SUCESSO\n\n"); 
 	
 	// Construção do tabuleiro
-	for (int i = 0; i < linha; i++)
-	{
-		for (int j = 0; j < coluna; j++)
 
-		{
-
-			printf("%d ", tabuleiro[i][j]);
-		}
-
-		printf("\n");
-	}
+	imprimirTabuleiro(tabuleiro);
 
 	printf("\n\n");
 	// Começar a usar os poderes
@@ -314,30 +320,51 @@ int main()
 		printf("1 - Poder Cone\n");
 		printf("2 - poder Cruz\n");
 		printf("3 - poder Octaedro\n");
+		printf("4 - SAIR\n");
 		printf("Opcao: ");
 		scanf("%d", &opcao);
+
+		
 
 		switch (opcao)
 		{
 		case 1:
 			printf("PODER DE CONE\n");
 
+			printf("Digite uma casa na Vertical: ");
+			scanf("%d", &vertical);
+			printf("Digite uma casa na Horizontal: ");
+			scanf("%d", &horizontal);
+
+			
 			break;
 
 		case 2:
+
 			printf("PODER DE CRUZ\n");
 
+
+			
 			break;
 
 		case 3:
+
 			printf("PODER DE OCTAEDRO\n");
+		
 			break;
 
+		case 4:
+
+		valido = 1;
+
+			break;
+			
 		default:
 
 			printf("OPCAO INVALIDA , TENTE NOVAMENTE");
 			break;
 		}
+
 	}
 	return 0;
 }
