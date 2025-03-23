@@ -28,6 +28,9 @@
 
 #define linha 10
 #define coluna 10
+#define poderVertical 5
+#define poderHorizontal 3
+
 
 void imprimirTabuleiro(int tabuleiro[linha][coluna])
 {
@@ -44,13 +47,29 @@ void imprimirTabuleiro(int tabuleiro[linha][coluna])
 	}
 }
 
-void poderOctaedro(int octaedro)
-{
-	int poderOctaedro[3][5] = {0};
+void inserirPoder(int tabuleiro[linha][coluna], int superPoder[poderVertical][poderHorizontal] , int x , int y){
 
-	for (int i = 0; i < 3; i++)
+	if (x < 0 || x + poderVertical > linha || y + poderHorizontal > coluna || y < 0){
+		printf("Esse Poder nao cabe nessa posicao");
+		return  ;
+		}
+
+	for (int i = 0 ; i < poderVertical ; i++){
+		for(int j = 0 ; j < poderHorizontal; j++ ){
+			tabuleiro[x+i][y+j] = superPoder[i][j]; 
+
+		}
+	}
+
+}
+
+/*void poderOctaedro(int octaedro)
+{
+	int poderOctaedro[poderHorizontal][poderVertical] = {0};
+
+	for (int i = 0; i < poderHorizontal; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < poderVertical; j++)
 		{
 
 			if (i == 0 && j == 2)
@@ -79,11 +98,11 @@ void poderOctaedro(int octaedro)
 void poderCruz(int cruz)
 {
 
-	int poderCruz[3][5] = {0};
+	int poderCruz[poderHorizontal][poderVertical] = {0};
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < poderHorizontal; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < poderVertical; j++)
 		{
 
 			if (i == 1 || j == 2)
@@ -98,11 +117,11 @@ void poderCruz(int cruz)
 void poderCone(int cone)
 {
 
-	int poderCone[3][5] = {0};
+	int poderCone[poderHorizontal][poderVertical] = {0};
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < poderHorizontal; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < poderVertical; j++)
 		{
 
 			if (i == 0 && j == 2)
@@ -125,6 +144,8 @@ void poderCone(int cone)
 		printf("\n");
 	}
 }
+*/
+
 
 int main()
 {
@@ -132,8 +153,25 @@ int main()
 	int tabuleiro[linha][coluna] = {0};
 	int horizontal = 0, vertical = 0;
 	int valido = 0;
-	int cone[3][5], cruz[3][5], octaedro[3][5];
-	int opcao;
+	int cone[3][5] = { 
+	{0,0,1,0,0},	
+	{0,1,1,1,0},	
+	{1,1,1,1,1}	
+	};
+	
+	int cruz[3][5] = {
+	{0,0,1,0,0},	
+	{1,1,1,1,1},
+	{0,0,1,0,0}	
+	};
+	
+	int octaedro[3][5] = {
+	{0,0,1,0,0},	
+	{0,1,1,1,0},
+	{0,0,1,0,0}	
+	};
+
+	int opcao, escolha, poderX ,poderY;
 
 	printf("Batalha Naval\n");
 	printf("Vamos Posicionar as peças\n");
@@ -322,21 +360,27 @@ int main()
 		printf("3 - poder Octaedro\n");
 		printf("4 - SAIR\n");
 		printf("Opcao: ");
-		scanf("%d", &opcao);
+		scanf("%d", &escolha);
 
-		
+		int(*poderEscolhido)[poderHorizontal][poderVertical];
 
-		switch (opcao)
+		switch (escolha)
 		{
 		case 1:
+
+		poderEscolhido = &cone;
+
 			printf("PODER DE CONE\n");
 
 			printf("Digite uma casa na Vertical: ");
-			scanf("%d", &vertical);
+			scanf("%d", &poderY);
 			printf("Digite uma casa na Horizontal: ");
-			scanf("%d", &horizontal);
+			scanf("%d", &poderX);
 
-			
+			inserirPoder(imprimirTabuleiro, *poderEscolhido, poderX, poderY);
+
+			imprimirTabuleiro(tabuleiro);
+
 			break;
 
 		case 2:
