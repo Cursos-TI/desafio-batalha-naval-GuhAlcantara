@@ -1,31 +1,5 @@
 #include <stdio.h>
 
-// Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-// Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-// Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-// Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
-
-// Nível Mestre - Habilidades Especiais com Matrizes
-// Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-// Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-// Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-// Exemplos de exibição das habilidades:
-// Exemplo para habilidade em cone:
-// 0 0 1 0 0
-// 0 1 1 1 0
-// 1 1 1 1 1
-
-// Exemplo para habilidade em octaedro:
-// 0 0 1 0 0
-// 0 1 1 1 0
-// 0 0 1 0 0
-
-// Exemplo para habilidade em cruz:
-// 0 0 1 0 0
-// 1 1 1 1 1
-// 0 0 1 0 0
-
 #define linha 10
 #define coluna 10
 #define poderVertical 5
@@ -44,7 +18,11 @@ void inserirPoder(int tabuleiro[linha][coluna], int superPoder[poderHorizontal][
 	{
 		for (int j = 0; j < poderVertical; j++)
 		{
-			tabuleiro[x + i][y + j] = superPoder[i][j];
+			if (superPoder[i][j] == 1)
+			{
+
+				tabuleiro[x + i - 1][y + j - 2] = 1;
+			}
 		}
 	}
 }
@@ -63,89 +41,6 @@ void imprimirTabuleiro(int tabuleiro[linha][coluna])
 		printf("\n");
 	}
 }
-
-/*void poderOctaedro(int octaedro)
-{
-	int poderOctaedro[poderHorizontal][poderVertical] = {0};
-
-	for (int i = 0; i < poderHorizontal; i++)
-	{
-		for (int j = 0; j < poderVertical; j++)
-		{
-
-			if (i == 0 && j == 2)
-			{
-
-				poderOctaedro[i][j] = 1;
-			}
-			else if (i == 1 && (j >= 1 && j <= 3))
-			{
-
-				poderOctaedro[i][j] = 1;
-			}
-
-			else if (i == 2 && j == 2)
-			{
-
-				poderOctaedro[i][j] = 1;
-			}
-
-			printf("%d", poderOctaedro[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-void poderCruz(int cruz)
-{
-
-	int poderCruz[poderHorizontal][poderVertical] = {0};
-
-	for (int i = 0; i < poderHorizontal; i++)
-	{
-		for (int j = 0; j < poderVertical; j++)
-		{
-
-			if (i == 1 || j == 2)
-
-				poderCruz[i][j] = 1;
-			printf("%d ", poderCruz[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-void poderCone(int cone)
-{
-
-	int poderCone[poderHorizontal][poderVertical] = {0};
-
-	for (int i = 0; i < poderHorizontal; i++)
-	{
-		for (int j = 0; j < poderVertical; j++)
-		{
-
-			if (i == 0 && j == 2)
-			{
-
-				poderCone[i][j] = 1;
-			}
-			else if (i == 1 && (j > 0 && j < 4))
-			{
-
-				poderCone[i][j] = 1;
-			}
-			else if (i == 2)
-			{
-				poderCone[i][j] = 1;
-			}
-
-			printf("%d", poderCone[i][j]);
-		}
-		printf("\n");
-	}
-}
-*/
 
 int main()
 {
