@@ -31,6 +31,23 @@
 #define poderVertical 5
 #define poderHorizontal 3
 
+void inserirPoder(int tabuleiro[linha][coluna], int superPoder[poderHorizontal][poderVertical], int x, int y)
+{
+
+	if (x < 0 || x + poderVertical > linha || y + poderHorizontal > coluna || y < 0)
+	{
+		printf("Esse Poder nao cabe nessa posicao");
+		return;
+	}
+
+	for (int i = 0; i < poderHorizontal; i++)
+	{
+		for (int j = 0; j < poderVertical; j++)
+		{
+			tabuleiro[x + i][y + j] = superPoder[i][j];
+		}
+	}
+}
 
 void imprimirTabuleiro(int tabuleiro[linha][coluna])
 {
@@ -45,22 +62,6 @@ void imprimirTabuleiro(int tabuleiro[linha][coluna])
 
 		printf("\n");
 	}
-}
-
-void inserirPoder(int tabuleiro[linha][coluna], int superPoder[poderVertical][poderHorizontal] , int x , int y){
-
-	if (x < 0 || x + poderVertical > linha || y + poderHorizontal > coluna || y < 0){
-		printf("Esse Poder nao cabe nessa posicao");
-		return  ;
-		}
-
-	for (int i = 0 ; i < poderVertical ; i++){
-		for(int j = 0 ; j < poderHorizontal; j++ ){
-			tabuleiro[x+i][y+j] = superPoder[i][j]; 
-
-		}
-	}
-
 }
 
 /*void poderOctaedro(int octaedro)
@@ -146,32 +147,28 @@ void poderCone(int cone)
 }
 */
 
-
 int main()
 {
 
 	int tabuleiro[linha][coluna] = {0};
 	int horizontal = 0, vertical = 0;
 	int valido = 0;
-	int cone[3][5] = { 
-	{0,0,1,0,0},	
-	{0,1,1,1,0},	
-	{1,1,1,1,1}	
-	};
-	
-	int cruz[3][5] = {
-	{0,0,1,0,0},	
-	{1,1,1,1,1},
-	{0,0,1,0,0}	
-	};
-	
-	int octaedro[3][5] = {
-	{0,0,1,0,0},	
-	{0,1,1,1,0},
-	{0,0,1,0,0}	
-	};
+	int cone[poderHorizontal][poderVertical] = {
+		{0, 0, 1, 0, 0},
+		{0, 1, 1, 1, 0},
+		{1, 1, 1, 1, 1}};
 
-	int opcao, escolha, poderX ,poderY;
+	int cruz[poderHorizontal][poderVertical] = {
+		{0, 0, 1, 0, 0},
+		{1, 1, 1, 1, 1},
+		{0, 0, 1, 0, 0}};
+
+	int octaedro[poderHorizontal][poderVertical] = {
+		{0, 0, 1, 0, 0},
+		{0, 1, 1, 1, 0},
+		{0, 0, 1, 0, 0}};
+
+	int opcao, escolha, poderX, poderY;
 
 	printf("Batalha Naval\n");
 	printf("Vamos Posicionar as peças\n");
@@ -281,7 +278,7 @@ int main()
 		else
 		{
 
-			valido = 1 ;
+			valido = 1;
 		}
 	}
 
@@ -342,9 +339,8 @@ int main()
 	}
 	printf("\n\n");
 
+	printf("NAVIOS POSICIONADOS COM SUCESSO\n\n");
 
-	printf("NAVIOS POSICIONADOS COM SUCESSO\n\n"); 
-	
 	// Construção do tabuleiro
 
 	imprimirTabuleiro(tabuleiro);
@@ -352,8 +348,12 @@ int main()
 	printf("\n\n");
 	// Começar a usar os poderes
 	valido = 0; // para conseguir resetar os menus while
+
+	int(*poderEscolhido)[poderHorizontal][poderVertical];
+
 	while (!valido)
 	{
+
 		printf("Escolha qual poder voce deseja usar\n");
 		printf("1 - Poder Cone\n");
 		printf("2 - poder Cruz\n");
@@ -362,53 +362,59 @@ int main()
 		printf("Opcao: ");
 		scanf("%d", &escolha);
 
-		int(*poderEscolhido)[poderHorizontal][poderVertical];
-
 		switch (escolha)
 		{
 		case 1:
-
-		poderEscolhido = &cone;
-
-			printf("PODER DE CONE\n");
+			poderEscolhido = &cone;
 
 			printf("Digite uma casa na Vertical: ");
 			scanf("%d", &poderY);
 			printf("Digite uma casa na Horizontal: ");
 			scanf("%d", &poderX);
 
-			inserirPoder(imprimirTabuleiro, *poderEscolhido, poderX, poderY);
+			inserirPoder(tabuleiro, *poderEscolhido, poderY, poderX);
 
 			imprimirTabuleiro(tabuleiro);
 
 			break;
 
 		case 2:
+			poderEscolhido = &cruz;
 
-			printf("PODER DE CRUZ\n");
+			printf("Digite uma casa na Vertical: ");
+			scanf("%d", &poderY);
+			printf("Digite uma casa na Horizontal: ");
+			scanf("%d", &poderX);
 
+			inserirPoder(tabuleiro, *poderEscolhido, poderY, poderX);
 
-			
+			imprimirTabuleiro(tabuleiro);
+
 			break;
 
 		case 3:
+			poderEscolhido = &octaedro;
 
-			printf("PODER DE OCTAEDRO\n");
-		
+			printf("Digite uma casa na Vertical: ");
+			scanf("%d", &poderY);
+			printf("Digite uma casa na Horizontal: ");
+			scanf("%d", &poderX);
+
+			inserirPoder(tabuleiro, *poderEscolhido, poderY, poderX);
+
+			imprimirTabuleiro(tabuleiro);
+
 			break;
 
 		case 4:
+			printf("Saindo...\n");
+			return 0;
 
-		valido = 1;
-
-			break;
-			
 		default:
-
-			printf("OPCAO INVALIDA , TENTE NOVAMENTE");
-			break;
+			printf("Opcao invalida, tente novamente.\n");
+			continue;
 		}
-
 	}
+
 	return 0;
 }
